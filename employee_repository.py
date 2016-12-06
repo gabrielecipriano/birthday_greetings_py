@@ -1,26 +1,26 @@
 class CSVEmployeeRepository:
     def __init__(self, csv_intepreter):
-        self.anagraphic = csv_intepreter.employees()
+        self._anagraphic = csv_intepreter.employees()
 
     def birthdayFor(self, month, day):
-        return self.anagraphic.bornOn(Birthday(month, day))
+        return self._anagraphic.bornOn(Birthday(month, day))
 
 
 class Anagraphic:
     def __init__(self, employees):
-        self.employees = employees
+        self._employees = employees
 
     def bornOn(self, birthday):
-        return self.employees.get(birthday)
+        return self._employees.get(birthday)
 
 
 class Birthday:
     def __init__(self, month, day):
-        self.month = month
-        self.day = day
+        self._month = month
+        self._day = day
 
     def __key(self):
-        return (self.month, self.day)
+        return (self._month, self._day)
 
     def __eq__(self, other):
         return self.__key() == other.__key()

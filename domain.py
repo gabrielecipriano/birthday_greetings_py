@@ -19,9 +19,9 @@ class Contact:
 
 class BirthdayGreetings:
     def __init__(self, employee_repository, email_service):
-        self.message_service = email_service
-        self.employee_repository = employee_repository
+        self._message_service = email_service
+        self._employee_repository = employee_repository
 
     def sendGreetings(self, today):
-        persons = self.employee_repository.birthdaysFor(today.month, today.day)
-        self.message_service.send(persons)
+        persons = self._employee_repository.birthdaysFor(today.month, today.day)
+        self._message_service.send(persons)
